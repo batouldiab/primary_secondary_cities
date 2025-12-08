@@ -1,0 +1,12 @@
+# ignore mapping by default
+mapping/*
+venv/
+__pycache__/
+
+# allow the data folder but still ignore its contents
+!mapping/data/
+mapping/data/*
+
+# allow only these files
+!mapping/data/cities_skills.xlsx
+!mapping/data/all_OJAs_aggregated.xlsx
