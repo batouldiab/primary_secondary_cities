@@ -1,5 +1,6 @@
+streamlit
+python-calamine
 openpyxl
+pydeck
 pandas
 numpy
-pydeck
-calamine
