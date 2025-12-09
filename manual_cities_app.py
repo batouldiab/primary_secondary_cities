@@ -259,23 +259,30 @@ def build_major_centers_with_aggregated_posts(
             included_posts = 0
             included_count = 0
 
-            if agg is not None and not agg.empty:
-                major_city_data = agg[agg["__City_norm__"] == city_norm]
-                if not major_city_data.empty:
-                    own_posts = int(major_city_data["Count"].iloc[0])
+            # Skip centers that are missing from the aggregated workbook or have zero posts.
+            if agg is None or agg.empty:
+                continue
 
-                distances = _haversine_km_vec(
-                    agg["lat"].to_numpy(),
-                    agg["lon"].to_numpy(),
-                    lat0,
-                    lon0,
-                )
-                within_radius_mask = (distances <= float(radius_km)) & (
-                    agg["__City_norm__"] != city_norm
-                )
-                locations_within = agg[within_radius_mask]
-                included_posts = int(locations_within["Count"].sum())
-                included_count = len(locations_within)
+            major_city_data = agg[agg["__City_norm__"] == city_norm]
+            if major_city_data.empty:
+                continue
+
+            own_posts = int(major_city_data["Count"].iloc[0])
+            if own_posts <= 0:
+                continue
+
+            distances = _haversine_km_vec(
+                agg["lat"].to_numpy(),
+                agg["lon"].to_numpy(),
+                lat0,
+                lon0,
+            )
+            within_radius_mask = (distances <= float(radius_km)) & (
+                agg["__City_norm__"] != city_norm
+            )
+            locations_within = agg[within_radius_mask]
+            included_posts = int(locations_within["Count"].sum())
+            included_count = len(locations_within)
 
             total_posts = own_posts + included_posts
 
