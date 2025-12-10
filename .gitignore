@@ -2,6 +2,8 @@
 mapping/*
 venv/
 __pycache__/
+skills_by_country_aggregated/
+requested_scripts/
 
 # allow the data folder but still ignore its contents
 !mapping/data/
