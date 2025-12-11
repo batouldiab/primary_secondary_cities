@@ -1001,10 +1001,7 @@ def render_version_1():
     )
 
     st.markdown("---")
-    st.caption(
-        "**Red circles** scaled by job post count (aggregated). "
-        "Hover over circles to see city details."
-    )
+    
 
 
 # ==========================
@@ -1243,12 +1240,7 @@ def render_version_2():
             else:
                 render_skills_panel(sel_country, sel_city)
         else:
-            render_skills_panel(sel_country, sel_city)
-    else:
-        st.caption(
-            "**Green circles** show coverage areas (Radius_km_max). "
-            "Click a city or select from dropdown to view skills."
-        )
+            render_skills_panel(sel_country, sel_city) 
 
 
 # ==========================
@@ -1267,6 +1259,15 @@ version = st.radio(
 st.markdown("---")
 
 if version == "Global Map":
+    st.caption(
+        "**Global view**: red circles show job post counts for all cities; labels and hover tooltips are limited to priority cities. **Hover** over circles to see city details."
+    )
+
     render_version_1()
 else:
+    st.caption(
+        "**Coverage view**: green circles show coverage radii for all primary/secondary cities; labels show priority cities (or all cities when a country is selected). **Click a city** or **select from dropdown** to view skills (wait a moment for data to load)."
+    )
+    
+
     render_version_2()
