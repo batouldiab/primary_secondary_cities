@@ -757,7 +757,8 @@ def render_skills_panel(
     if include_cities_norm and len(include_cities_norm) > 0:
         city_filter = include_cities_norm
         scope_label = f"within {int(radius_km)} km" if radius_km else "nearby"
-        scope_note = f"({len(city_filter)} locations)"
+        # scope_note = f"({len(city_filter)} locations)"
+        scope_note = ""
     else:
         city_filter = {_normcase(city)}
         scope_label = "city only"
