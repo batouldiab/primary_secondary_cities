@@ -52,18 +52,18 @@ DEFAULT_FALLBACK_RADIUS_KM = 10
 # Static always-label list if desired
 ALWAYS_LABEL_CITIES_STATIC: Set[Tuple[str, str]] = set()
 
-# Mapping from original names in Excel to renamed display names
-CITY_RENAME_MAP = {
-    "nineveh": "Mosul",
-    "south darfur": "Nyala",
-}
+# # Mapping from original names in Excel to renamed display names
+# CITY_RENAME_MAP = {
+#     "nineveh": "Mosul",
+#     "south darfur": "Nyala",
+# }
 
-def _apply_city_rename(name: str) -> str:
-    """Apply rename mapping (Nineveh -> Mosul, South Darfur -> Nyala)"""
-    if not name:
-        return name
-    norm = re.sub(r"\s+", " ", str(name)).strip().casefold()
-    return CITY_RENAME_MAP.get(norm, name)
+# def _apply_city_rename(name: str) -> str:
+#     """Apply rename mapping (Nineveh -> Mosul, South Darfur -> Nyala)"""
+#     if not name:
+#         return name
+#     norm = re.sub(r"\s+", " ", str(name)).strip().casefold()
+#     return CITY_RENAME_MAP.get(norm, name)
 
 # ==========================
 # Helpers
@@ -211,8 +211,8 @@ def load_aggregated_all_sheets(path: Path, mtime: float) -> Dict[str, pd.DataFra
         if df.empty:
             continue
 
-        # Apply city rename (Nineveh -> Mosul, South Darfur -> Nyala)
-        df["City"] = df["City"].apply(_apply_city_rename)
+        # # Apply city rename (Nineveh -> Mosul, South Darfur -> Nyala)
+        # df["City"] = df["City"].apply(_apply_city_rename)
 
         cdf = pd.DataFrame(
             {
@@ -409,7 +409,7 @@ def load_primary_secondary_cities(path: Path) -> pd.DataFrame:
 
     df["country"] = _strip_weird_whitespace(df["country"]).replace("nan", "")
     df["Center_City"] = _strip_weird_whitespace(df["Center_City"]).replace("nan", "")
-    df["Center_City"] = df["Center_City"].apply(_apply_city_rename)
+    # df["Center_City"] = df["Center_City"].apply(_apply_city_rename)
 
     df["lat"] = pd.to_numeric(df["latitude"], errors="coerce")
     df["lon"] = pd.to_numeric(df["longitude"], errors="coerce")
