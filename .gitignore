@@ -12,3 +12,4 @@ mapping/data/*
 # allow only these files
 !mapping/data/cities_skills.xlsx
 !mapping/data/all_OJAs_aggregated.xlsx
+!mapping/data/primary_secondary_cities.json

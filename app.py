@@ -255,7 +255,7 @@ def _file_mtime(path: Path) -> float:
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "mapping/data"
 
-PRIMARY_SECONDARY_JSON_PATH = ROOT / "primary_secondary_cities.json"
+PRIMARY_SECONDARY_JSON_PATH = DATA_DIR / "primary_secondary_cities.json"
 SKILLS_XLSX_PATH = DATA_DIR / "cities_skills.xlsx"
 AGGREGATED_XLSX_PATH = DATA_DIR / "all_OJAs_aggregated.xlsx"
 SKILLS_AVAILABLE = SKILLS_XLSX_PATH.exists()
