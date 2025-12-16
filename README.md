@@ -124,13 +124,6 @@ All configurations can be found in [app.py](app.py) lines 136-150.
 4. **Export Data**: Download filtered data as CSV files
 5. **Interact with Map**: Zoom, pan, and click on bubbles for details
 
-## 📝 License
-
-[Add your license information here]
-
-## 👥 Contributors
-
-[Add contributor information here]
 
 ## 🐛 Issues & Support
 
